@@ -227,7 +227,7 @@ require('lazy').setup({
   --    Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {})
 
 -- [[ Setting options ]]
@@ -562,3 +562,40 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+vim.opt.clipboard = "unnamedplus"
+vim.opt.whichwrap = "b,s,[,],<,>"
+vim.opt.backspace = "indent,eol,start"
+vim.opt.ambiwidth = "single"
+vim.opt.wildmenu = true
+vim.opt.cmdheight = 1
+vim.opt.laststatus = 2
+vim.opt.showcmd = true
+vim.opt.hlsearch = true
+vim.opt.hidden = true
+vim.opt.backup = true
+vim.opt.backupdir = os.getenv("HOME") .. '/.vim/backup'
+vim.opt.winblend = 20
+vim.opt.pumblend = 20
+vim.opt.termguicolors = true
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.expandtab = true
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+vim.opt.relativenumber = true
+vim.opt.wrap = false
+vim.opt.nrformats = "bin,hex"
+vim.opt.swapfile = false
+vim.opt.formatoptions:remove('t')
+vim.opt.formatoptions:append('mM')
+
+require("telescope").load_extension "file_browser"
+vim.api.nvim_set_keymap(
+  "n",
+  "<space>fb",
+  ":Telescope file_browser<CR>",
+  { noremap = true }
+)
+
+vim.keymap.set('n', '<leader>a', ':ArgWrap<CR>', { desc = '[a] ArgWrap' })
